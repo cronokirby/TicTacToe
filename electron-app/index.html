@@ -2,16 +2,35 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="index.css">
     <title>Hello World!</title>
   </head>
   <body>
     <h1>Hello World!</h1>
-    <div id="greeting">
-    </div>
+    <div class="GameSpace">
+        <table>
+            <tr>
+                <th class="Bottom Right"> <button id="B_1"> X </button>
+                <th class="Bottom Left Right"> <button id="B_2"> X </button>
+                <th class="Left Bottom"> <button id="B_3"> X </button>
+            </tr>
+            <tr>
+                <th class="Top Right Bottom"> <button id="B_4"> O </button>
+                <th> <button id="B_5"> X </button>
+                <th class="Left Top Bottom"> <button id="B_6"> O </button>
+            </tr>
+            <tr>
+                <th class="Top Right"> <button id="B_7"> X </button>
+                <th class="Top"> <button id="B_8"> X </button>
+                <th class="Top Left"> <button id="B_9"> X </button>
+            </tr>
+        </table>
+        <button id="fetchAddition"> 3 + 1 </button>
+        <p id="additionResult"> ... </p>
+</div>
   </body>
 
-  <button id="fetchAddition"> 3 + 1 </button>
-  <p id="additionResult"> ... </p>
+
 
   <script>
       window.nodeRequire = require;

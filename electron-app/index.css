@@ -1,0 +1,34 @@
+:root{
+     --XBlue: #335db0;
+     --ORed:  #991521;
+     --GameBorder: Black; 
+}
+button {
+    background-color: inherit;
+    height: 140px;
+    width: 140px;
+    color: var(--ORed);
+    font-size: 125px;
+
+}
+
+.GameSpace table {
+    border-collapse: collapse
+}
+
+
+.Top {
+    border-top: 8px ridge var(--GameBorder);
+}
+
+.Left {
+    border-left: 8px ridge var(--GameBorder);
+}
+
+.Right {
+    border-right: 8px ridge var(--GameBorder);
+}
+
+.Bottom {
+    border-bottom: 8px ridge var(--GameBorder);
+}
