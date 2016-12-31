@@ -1,7 +1,8 @@
 # node
 **/node_modules
 *.log
-
+# linter settings
+*.jshintrc
 # haskell
 dist
 dist-*

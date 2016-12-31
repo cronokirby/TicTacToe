@@ -1,6 +1,6 @@
 // Backend and endpoint details
-const host     = 'http://127.0.0.1:8080'
-const endpoint = '/hello'
+const host     = 'http://127.0.0.1:8080';
+const endpoint = '/hello';
 
 /*let fetchGreeting = function(url) {
   $.getJSON(url, function(greeting) {
@@ -13,12 +13,12 @@ const endpoint = '/hello'
 
 fetchGreeting(host + endpoint)*/
 function additionCallback(result){
-    let output = `${result.body}`
-    console.log(output)
+    let output = `${result.body}`;
+    console.log(output);
     $('#additionResult').html(output);
 }
 function fetchAddition() {
-    let postData = { body: "3 + 1" }
+    let postData = { body: "3 + 1" };
     $.ajax({
         headers: {
         'Accept': 'application/json',
@@ -29,7 +29,7 @@ function fetchAddition() {
         data:     JSON.stringify(postData),
         dataType: 'json',
         success: additionCallback
-    })
+    });
 }
 
-document.getElementById("fetchAddition").onclick = fetchAddition
+document.getElementById("fetchAddition").onclick = fetchAddition;
