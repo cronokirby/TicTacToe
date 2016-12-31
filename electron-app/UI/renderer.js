@@ -1,35 +1,32 @@
-// Backend and endpoint details
-const host     = 'http://127.0.0.1:8080';
-const endpoint = '/hello';
+var backend = require('./backend/interface.js');
 
-/*let fetchGreeting = function(url) {
-  $.getJSON(url, function(greeting) {
-      // Construct the greeting HTML output
-      let output = `${greeting.greeting}`
-
-    $('#greeting').html(output)
-  })
-}
-
-fetchGreeting(host + endpoint)*/
+let additionPost = { body: "4 + 1" };
+// Parses the result of an addition POST, and updates the result field
 function additionCallback(result){
     let output = `${result.body}`;
     console.log(output);
     $('#additionResult').html(output);
 }
-function fetchAddition() {
-    let postData = { body: "3 + 1" };
-    $.ajax({
-        headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-        },
-        url:      host + "/addition",
-        type:     'POST',
-        data:     JSON.stringify(postData),
-        dataType: 'json',
-        success: additionCallback
-    });
+document.getElementById("addition").onclick = function () {
+    backend.post("/addition", additionPost, additionCallback);
+};
+
+// sets onclick to trigger squareEvent, for every square
+let table = document.getElementById('gameTable');
+for (let r = 0; r < table.rows.length; r++) {
+    for (let c = 0; c < table.rows[r].cells.length; c++) {
+        let cell = table.rows[r].cells[c];
+        let position   = (r*3) + c;
+        cell.onclick = squareEvent(cell, position);
+    }
 }
 
-document.getElementById("fetchAddition").onclick = fetchAddition;
+function squareEvent (cell, position) {
+    return function () {
+        let button = $(cell).children();
+        button.css({'color':'var(--XBlue)'});
+        button.attr('value', 'X');
+
+        console.log(position);
+    };
+}

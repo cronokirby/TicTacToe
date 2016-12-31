@@ -1,13 +1,14 @@
 :root{
      --XBlue: #335db0;
      --ORed:  #991521;
-     --GameBorder: Black; 
+     --GameBorder: Black;
 }
-button {
+input{
     background-color: inherit;
     height: 140px;
     width: 140px;
     color: var(--ORed);
+    font-family: sans-serif;
     font-size: 125px;
 
 }
