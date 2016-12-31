@@ -11,11 +11,12 @@ import Network.Wai
 import Network.Wai.Handler.Warp
 import Servant
 
-data Greeting = Greeting { message :: String } deriving (Eq, Show)
+data Expression = Expression { body :: String } deriving (Eq, Show)
 
-$(deriveJSON defaultOptions ''Greeting)
+$(deriveJSON defaultOptions ''Expression)
 
-type API = "hello" :> Get '[JSON] Greeting
+type API = "addition" :> ReqBody '[JSON] Expression
+                      :> Post '[JSON] Expression
 
 startApp :: IO ()
 startApp = run 8080 app
@@ -27,7 +28,7 @@ api :: Proxy API
 api = Proxy
 
 server :: Server API
-server = return basicGreeting
+server = addition
 
-basicGreeting :: [Greeting]
-basicGreeting = Greeting "Hello World!"
+addition :: Expression -> Handler Expression
+addition (Expression body) = return $ Expression (body ++ " you want this?")
