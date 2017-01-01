@@ -20,7 +20,7 @@ function resetGameState() {
     }
 }
 // Serves to initialise
-resetGameState;
+resetGameState();
 
 // sets onclick to trigger cellEvent, for every square
 let table = document.getElementById('gameTable');
