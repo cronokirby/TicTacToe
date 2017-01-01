@@ -11,6 +11,7 @@ import Network.Wai
 import Network.Wai.Handler.Warp
 import Servant
 
+
 data Expression = Expression { body :: String } deriving (Eq, Show)
 
 $(deriveJSON defaultOptions ''Expression)

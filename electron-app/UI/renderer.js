@@ -23,10 +23,10 @@ for (let r = 0; r < table.rows.length; r++) {
 
 function squareEvent (cell, position) {
     return function () {
+        // Sets the contents of the button to a blue X
         let button = $(cell).children();
         button.css({'color':'var(--XBlue)'});
         button.attr('value', 'X');
-
-        console.log(position);
+        // Send
     };
 }
