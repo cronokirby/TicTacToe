@@ -4,10 +4,8 @@ import Data.List
 import Data.List.Split
 
 -- Represents a single cell on a board
-type Coordinate = (Int, Int)
 data Mark = X | O | Empty deriving (Show, Eq)
 data Cell = Cell { mark :: Mark, position :: Int} deriving (Show)
-
 
 makeLines :: [Cell] -> [[Cell]]
 makeLines cells = let rows    = chunksOf 3 cells
@@ -41,11 +39,7 @@ nextMove _ cells _ = case cellToBlock $ makeLines cells of
                               arbitraryPos = position . head
                                 $ filter (\e -> mark e == Empty) cells
 
-
-
-
-
-
-testGame = [ Cell X 0, Cell O 1, Cell X 2
+testGameState = [ Cell X 0, Cell O 1, Cell X 2
                , Cell Empty 3, Cell X 4, Cell O 5
                , Cell O 6, Cell X 7, Cell Empty 8]
+-- NextMove should be Cell O 8
