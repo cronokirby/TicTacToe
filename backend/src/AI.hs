@@ -26,7 +26,7 @@ cellToBlock cellLines = position . head . filter (\e -> mark e == "Empty")
 type Turn = Int
 type GameState = [Cell]
 nextMove :: Turn -> GameState -> Cell -> Cell
-nextMove 1 _ lastMove
+nextMove 2 _ lastMove
     | pos `elem` [0, 2, 6, 8] = Cell "O" 4  --Corner -> place in center
     | pos == 4                = Cell "O" 0  --Center -> place in corner
     | otherwise               = Cell "O" 4  --Side -> place in center
