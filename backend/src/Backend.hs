@@ -21,7 +21,7 @@ data GameOutput = GameOutput {winner :: Winner, move :: Cell}
 $(deriveJSON defaultOptions ''Winner)
 $(deriveJSON defaultOptions ''GameOutput)
 
-type API = "gameinput" :> ReqBody '[JSON] Input :> Post '[JSON] Cell
+type API = "gameinput" :> ReqBody '[JSON] GameInput :> Post '[JSON] GameOutput
 
 startApp :: IO ()
 startApp = run 8080 app
@@ -35,5 +35,6 @@ api = Proxy
 server :: Server API
 server = gameinput
 
-gameinput :: GameInput -> Handler Cell
-gameinput (GameInput turn cells lastMove) = return $ nextMove turn cells lastMove
+gameinput :: GameInput -> Handler GameOutput
+gameinput (GameInput turn cells lastMove) =
+    return $ GameOutput (isWinner cells) (nextMove turn cells lastMove)

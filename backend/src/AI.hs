@@ -1,4 +1,4 @@
-module AI (Cell(..), Winner, nextMove) where
+module AI (Cell(..), Winner, nextMove, isWinner) where
 
 import Data.List
 import Data.List.Split
