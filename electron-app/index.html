@@ -45,9 +45,9 @@
   <script>
       window.nodeRequire = require;
       // Fetch jQuery
-      window.$ = window.jQuery = nodeRequire('jquery');
+      window.$ = window.jQuery = require('./static-resources/jQuery-2.2.3.min.js');
       // The JS file that will do the heavy lifting
-      nodeRequire('./UI/renderer.js');
+      require('./UI/renderer.js');
   </script>
 
 </html>

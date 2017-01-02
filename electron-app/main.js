@@ -13,14 +13,13 @@ let backendServer;
 function createWindow () {
   mainWindow = new BrowserWindow({width: 800, height: 600});
   mainWindow.loadURL('file://' + __dirname + '/index.html');
-  mainWindow.webContents.openDevTools();
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
 }
 
 function createBackendServer () {
-  backendServer = child_process.spawn('./resources/backend-exe');
+  backendServer = child_process.spawn('./static-resources/backend-exe');
 }
 
 app.on('ready', createWindow);
