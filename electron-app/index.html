@@ -26,6 +26,10 @@
                     <input type=button id="B_4" value="" class="GameInput"></button>
                 <th class="Left Top Bottom">
                     <input type=button id="B_5" value="" class="GameInput"></button>
+                <th>
+                    <div class="GameButtons fade-in is-paused" id="WinnerBox">
+                        <p id="WinnerText"></p>
+                    </div>
             </tr>
             <tr>
                 <th class="Top Right">
@@ -41,9 +45,9 @@
   <script>
       window.nodeRequire = require;
       // Fetch jQuery
-      window.$ = window.jQuery = nodeRequire('jquery')
+      window.$ = window.jQuery = nodeRequire('jquery');
       // The JS file that will do the heavy lifting
-      nodeRequire('./UI/renderer.js')
+      nodeRequire('./UI/renderer.js');
   </script>
 
 </html>

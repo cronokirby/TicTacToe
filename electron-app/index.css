@@ -11,9 +11,11 @@ body {
 .GameButtons {
     float: left;
     background-color: white;
+    width: 160px;
     height: 70px;
     font-family: sans-serif;
     font-size: 20px;
+    border: 1px solid black;
 }
 
 .GameInput {
@@ -46,4 +48,19 @@ body {
 
 .Bottom {
     border-bottom: 8px ridge var(--GameBorder);
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn .5s ease-in 1 forwards;
+}
+
+.is-paused {
+  animation-play-state: paused;
 }

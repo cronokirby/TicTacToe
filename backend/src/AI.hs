@@ -20,7 +20,7 @@ isDangerous line = length (filter (\cell -> mark cell == "X" ) line) == 2
                 && not (any (\cell -> mark cell == "O" ) line)
 
 -- Returns the position of the cell that needs to be blocked
-cellToBlock :: GameState -> Maybe Int
+cellToBlock :: [Line] -> Maybe Int
 cellToBlock cellLines = position . head . filter (\e -> mark e == "Empty")
                     <$> find isDangerous cellLines
 
@@ -48,6 +48,11 @@ isComplete line
     | otherwise                            = None
 
 isWinner :: GameState -> Winner
-isWinner cells = case filter (!= None) (map isComplete $ makeLines cells) of
+isWinner cells = case filter (/= None) (map isComplete $ makeLines cells) of
                     []        -> None
                     (mark:xs) -> mark
+
+
+testState = [Cell "O" 0, Cell "X" 1, Cell "X" 2,
+             Cell "O" 3, Cell "O" 4, Cell "O" 5,
+             Cell "O" 6, Cell "X" 7, Cell "X" 8]
