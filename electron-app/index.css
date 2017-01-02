@@ -3,8 +3,21 @@
      --ORed:  #991521;
      --GameBorder: Black;
 }
-input{
-    background-color: inherit;
+
+body {
+    background-color: powderblue;
+}
+
+.GameButtons {
+    float: left;
+    background-color: white;
+    height: 70px;
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+.GameInput {
+    background-color: white;
     height: 140px;
     width: 140px;
     color: var(--ORed);
@@ -14,7 +27,8 @@ input{
 }
 
 .GameSpace table {
-    border-collapse: collapse
+    border-collapse: collapse;
+    float: left;
 }
 
 

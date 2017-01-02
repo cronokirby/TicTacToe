@@ -1,20 +1,10 @@
 var backend = require('./backend/interface.js');
 
-let additionPost = { body: "4 + 1" };
-// Parses the result of an addition POST, and updates the result field
-function additionCallback(result) {
-    let output = `${result.body}`;
-    console.log(output);
-    $('#additionResult').html(output);
-}
-document.getElementById("addition").onclick = function () {
-    backend.post("/addition", additionPost, additionCallback);
-};
-
 var currentTurn = 0;
 // The starting dictionary for the gameState
 var gameState = [];
 function resetGameState() {
+    currentTurn = 0;
     for (let i = 0; i <= 9; i++) {
         gameState[i] = { mark: "Empty", position: i};
     }
@@ -22,20 +12,29 @@ function resetGameState() {
 // Serves to initialise
 resetGameState();
 
+document.getElementById('ResetGame').onclick = function () {
+    resetGameState();
+    resetBoard();
+};
+
 // sets onclick to trigger cellEvent, for every square
-let table = document.getElementById('gameTable');
-for (let r = 0; r < table.rows.length; r++) {
-    for (let c = 0; c < table.rows[r].cells.length; c++) {
-        let cell = table.rows[r].cells[c];
-        let position   = (r*3) + c;
-        cell.onclick = cellEvent(cell, position);
+let gameInputs = document.getElementsByClassName('GameInput');
+for (let i = 0; i < gameInputs.length; i++) {
+    let cell = gameInputs[i];
+    cell.onclick = cellEvent(cell, i);
+}
+
+function resetBoard () {
+    for (let i = 0; i < gameInputs.length; i++) {
+        let cell = $(gameInputs[i]);
+        cell.attr('value', '');
     }
 }
 
 function cellEvent (cell, position) {
     return function () {
         // Sets the contents of the button to a blue X
-        let button = $(cell).children();
+        let button = $(cell);
         button.css({'color':'var(--XBlue)'});
         button.attr('value', 'X');
         // Modify the gameState
@@ -50,11 +49,10 @@ function cellEvent (cell, position) {
 }
 
 function cellCallback (result) {
-    console.log(currentTurn);
-    console.log(result);
     let position = result.position;
     let mark     = result.mark;
     gameState[position] = { mark: mark, position: position};
-    let cellID = `#B_${position}`;
-    $(cellID).attr('value', result.mark);
+    let cell = $(`#B_${position}`);
+    cell.css({'color':'var(--ORed)'});
+    cell.attr('value', result.mark);
 }
