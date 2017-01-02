@@ -20,5 +20,8 @@
     "electron": "^1.4.1",
     "electron-packager": "^8.4.0",
     "jquery": "^3.1.1"
+  },
+  "dependencies": {
+    "app-root-dir": "^1.0.2"
   }
 }

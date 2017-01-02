@@ -3,6 +3,7 @@ const electron = require('electron');
 const child_process = require('child_process');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
+const appRoot = require('app-root-dir').get();
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -13,13 +14,14 @@ let backendServer;
 function createWindow () {
   mainWindow = new BrowserWindow({width: 800, height: 600});
   mainWindow.loadURL('file://' + __dirname + '/index.html');
+  mainWindow.webContents.openDevTools();
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
 }
 
 function createBackendServer () {
-  backendServer = child_process.spawn('./static-resources/backend-exe');
+  backendServer = child_process.execFile(appRoot + '/static-resources/backend-exe');
 }
 
 app.on('ready', createWindow);
